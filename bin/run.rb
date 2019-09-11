@@ -3,6 +3,7 @@ require_relative '../lib/command_line.rb'
 require 'pry'
 # CommandLine.greet
 # CommandLine.get_donor_input
-
+#binding.pry
 new_cli = CommandLine.new
 new_cli.greet
+

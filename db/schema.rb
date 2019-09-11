@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190909221237) do
+ActiveRecord::Schema.define(version: 20190911204758) do
 
   create_table "charities", force: :cascade do |t|
     t.string  "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20190909221237) do
   create_table "donations", force: :cascade do |t|
     t.integer "charity_id"
     t.integer "donor_id"
+    t.integer "amount"
   end
 
   create_table "donors", force: :cascade do |t|

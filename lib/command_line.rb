@@ -6,18 +6,19 @@ class CommandLine
         name = gets.chomp
         puts "What is your location?"
         user_location = gets.chomp
+        new_donor = Donor.create(name: name, location: user_location)
         puts "Hi #{name}. Are you a donor or a charity?" 
         type_of_user = gets.chomp
         if type_of_user == "donor"
             puts 'Please choose what would you like to do'
-        get_donor_input 
+        get_donor_input(new_donor) 
         else
         get_charity_input
         end
 
       end  
 
-        def get_donor_input
+        def get_donor_input(donor)
         puts "1. See a list of charities names."
         puts "2. Search by category."
         puts "3. Make a donation."
@@ -25,8 +26,18 @@ class CommandLine
         donor_input = gets.chomp
         case donor_input
         when "1"
+          #list charities
+          all_charities = Charity.all
+          all_charities.each {|char|puts char.name}
          puts "Please enter a charity name to donate: "
          find_charity_name = gets.chomp
+         my_charity =Charity.find_by_name(find_charity_name)
+         puts "How much would yo like to donate?"
+         donation_amount = gets.chomp
+         donation = Donation.create(donor: donor, charity: my_charity, amount: donation_amount)
+
+
+
          #create_donation method
           when "2"
           puts "Please enter category type for list of choices: "

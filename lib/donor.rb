@@ -3,9 +3,15 @@ class Donor < ActiveRecord::Base
     has_many :charities, through: :donations
 
 
-    def create_donor_account(name, location)
-        self.new(self, name, location)
+    
+
+    def donate(amount, charity)
+        self.donations.create(amount: amount, charity: charity)
     end
+
+    
+    #Helper method #donate(takes amount of donation, donor id and charity id as arguments. Saves the donation amount to both parties profiles).
+    #def donate(amount, donor_id, charity_id)
 
 
 
