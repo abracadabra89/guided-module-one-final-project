@@ -9,9 +9,19 @@ class Donor < ActiveRecord::Base
         self.donations.create(amount: amount, charity: charity)
     end
 
+    def average_donations
+        self.donations.average(:amount).to_f
+    end
+
+    def max_donations
+        self.donations.maximum(:amount)
+    end
+
+    def sum_donations
+        self.donations.sum(:amount)
+    end
     
-    #Helper method #donate(takes amount of donation, donor id and charity id as arguments. Saves the donation amount to both parties profiles).
-    #def donate(amount, donor_id, charity_id)
+  
 
 
 
@@ -19,8 +29,4 @@ class Donor < ActiveRecord::Base
 end
 
 
-#create_account(name, location)
-#find_donation_by_charity_name
-#my_donations(see all donations)
-#latest_donation
-#largest_donation
+

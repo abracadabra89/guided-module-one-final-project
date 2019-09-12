@@ -3,14 +3,11 @@ class Charity < ActiveRecord::Base
     has_many :donors, through: :donations
  
 
-    def create_new_charity_organisation
-        self.new(name, location, founding_year)
-    end
+    # def create_new_charity_organisation
+    #     self.new(name, location, founding_year)
+    # end
 
-    def donors
-        
-    end
-
+    
     
     
 
