@@ -63,7 +63,7 @@ broad = Station.create(name: "Broad Street")
 
 # how could we add associations between the c line and broad street
 # station?
-
+sup
 ```
 
 You'll want to make sure you have enough data to play around with once you get your command line interface up and running. Five to ten instances of each model, as well as the corresponding relationships should be enough. You can always add more later.
