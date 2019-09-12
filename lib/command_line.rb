@@ -35,12 +35,10 @@ class CommandLine
          puts "How much would yo like to donate?"
          donation_amount = gets.chomp
          donation = Donation.create(donor: donor, charity: my_charity, amount: donation_amount)
-
-
-
-         #create_donation method
-          when "2"
-          puts "Please enter category type for list of choices: "
+         puts "Thank you for your donation!"
+         when "2"
+          puts "Please choose a category type:"
+          puts ""
           type_of_charity = gets.chomp
           when "3"
           puts "How much would you like to donate?"
@@ -52,16 +50,17 @@ class CommandLine
         greet
         end
       end
+    end
 
-      def get_charity_input
-        puts "What is the name of your charity?"
-        charity_name = gets.chomp
-        puts "What is the founding year of your organization?"
-        founding_year = gets.chomp
+    #   def get_charity_input
+    #     puts "What is the name of your charity?"
+    #     charity_name = gets.chomp
+    #     puts "What is the founding year of your organization?"
+    #     founding_year = gets.chomp
         
-    end
+    # end
     
-    end
+    # end
 
     
 
