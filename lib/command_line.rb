@@ -13,7 +13,10 @@ class CommandLine
             puts 'Please choose what would you like to do'
         get_donor_input(new_donor) 
         else
-        get_charity_input
+          puts "What charity would you like to choose?"
+          charity = gets.chomp
+          get_charity_input(new_charity)
+          new_charity
         end
 
       end  
@@ -32,38 +35,59 @@ class CommandLine
          puts "Please enter a charity name to donate: "
          find_charity_name = gets.chomp
          my_charity =Charity.find_by_name(find_charity_name)
-         puts "How much would yo like to donate?"
+         puts "How much would you like to donate?"
          donation_amount = gets.chomp
          donation = Donation.create(donor: donor, charity: my_charity, amount: donation_amount)
-
-
-
-         #create_donation method
-          when "2"
-          puts "Please enter category type for list of choices: "
-          type_of_charity = gets.chomp
-          when "3"
+        when "2"
+          list_categories
           puts "How much would you like to donate?"
           donation_amount = gets.chomp
-          #make_a_donation
-          when "4"
-          puts "Thanks for visiting!"
-        else
-        greet
+          donation = Donation.create(donor: donor, charity: my_charity, amount: donation_amount)
+          puts "Thank You for your donation!"
         end
       end
+    end
 
-      def get_charity_input
-        puts "What is the name of your charity?"
-        charity_name = gets.chomp
-        puts "What is the founding year of your organization?"
-        founding_year = gets.chomp
+      def get_charity_input(char)
+        puts "Good Cause"
+        puts "Save The Earth"
+        puts "Animal's Rescue"
+        puts "Children of Africa"
+        puts "Save the Tigers"
+        charity = gets.chomp
+
+ 
+        # puts “What is the name of your charity?”
+        # charity_name = gets.chomp
+        # puts “waht is your location?”
+        # charity_location = gets.chomp
+        # puts “What is the founding year of your organization?”
+        # charity_founding_year = gets.chomp
+        # puts “Please add a description of your charity organization?”
+        # charity_description = gets.chomp
+      end
+
+      def new_charity(new_charity)
+        new_charity = Charity.create(name: new_charity, location: charity_location, founding_year: charity_founding_year)
+        get_charity_input(new_charity)
+       puts “Your charity account has been created!”
+      end
+
+   
+  
         
-    end
+  
     
-    end
+    # end
 
+    def list_categories
+      puts "1. Great Causes"
+      puts "2. Altruism"
+      puts "3. Animals"
+      puts "4. Love of Tigers"
+      puts "5. Child Well-being"
+      find_by_category = gets.chomp
+      my_categories = Charity.find_by_category(find_by_category)
     
-
-
-
+  end
+# binding.pry
