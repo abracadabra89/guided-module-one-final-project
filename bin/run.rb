@@ -5,5 +5,6 @@ require 'pry'
 # CommandLine.get_donor_input
 #binding.pry
 new_cli = CommandLine.new
+new_cli.header
 new_cli.greet
 

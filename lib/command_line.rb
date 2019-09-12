@@ -1,47 +1,66 @@
 class CommandLine
+
+  def header
+    gif = <<-SUP
+ ██████╗  ██████╗ ███╗   ██╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗    ███╗   ██╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗
+ ██╔══██╗██╔═══██╗████╗  ██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║    ████╗  ██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
+ ██║  ██║██║   ██║██╔██╗ ██║███████║   ██║   ██║██║   ██║██╔██╗ ██║    ██╔██╗ ██║███████║   ██║   ██║██║   ██║██╔██╗ ██║
+ ██║  ██║██║   ██║██║╚██╗██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║    ██║╚██╗██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
+ ██████╔╝╚██████╔╝██║ ╚████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║    ██║ ╚████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
+ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+    SUP
+    puts gif
+  end
+
+
+  
 	def greet
 		puts "Welcome to Donation Nation!".colorize(:green)
-		puts "What is your name?".colorize(:red)
+		puts "What is your name?".colorize(:green)
 		name = gets.chomp
 		puts "What is your location?".colorize(:green)
 		user_location = gets.chomp
 		new_donor = Donor.create(name: name, location: user_location)
-		puts "Hi #{name}. Are you a donor or a charity?".colorize(:magenta)
-		type_of_user = gets.chomp
+    puts "Hi #{name}. Are you a donor or a charity?".colorize(:magenta)
+    puts "I am a " 
+    type_of_user = gets.chomp
 		if type_of_user == "donor"
 
-			puts 'Please choose what would you like to do'.colorize(:bg_magenta)
+      puts 'Please choose what would you like to do'.colorize(:magenta)
+      puts "                                                           "
 			get_donor_input(new_donor)
 		else
 
-			puts "What is the name of your charity?".colorize(:bg_green)
+			puts "What is the name of your charity?".colorize(:cyan)
 			charity_name = gets.chomp
 
-			puts "What is your location?".colorize(:bd_cyan)
+			puts "What is your location?".colorize(:cyan)
 			charity_location = gets.chomp
 
-			puts "What is the founding year of your charity?".colorize(:green)
+			puts "What is the founding year of your charity?".colorize(:cyan)
 			charity_founding_year = gets.chomp
 
 			puts "Please add a description of your charity organization?".colorize(:cyan)
 			charity_description = gets.chomp
 			charity = Charity.create(name: charity, location: charity_location, founding_year: charity_founding_year)
 
-			puts "Your charity account has been created!".colorize(:magenta)
+			puts "Your charity account has been created!".colorize(:green)
 		end
 	end
 
 	def get_donor_input(donor)
 
 		puts "1. See a list of charities names.".colorize(:green)
-		puts "2. Search by category.".colorize(:green)
+    puts "2. Search by category.".colorize(:green)
+    puts "                                                   "
+    print "My choice is "
 		donor_input = gets.chomp
 		case donor_input
 		when "1"
 			all_charities = Charity.all
 			all_charities.each {|char|puts char.name}
 
-			puts "Please enter a charity name to donate:".colorize(:brown)
+			puts "Please enter a charity name to donate:".colorize(:red)
 			find_charity_name = gets.chomp
 			my_charity = Charity.find_by_name(find_charity_name)
 
@@ -51,32 +70,39 @@ class CommandLine
 
 			puts "Thank you for your donation!".colorize(:cyan)
 			donor_menu(donor)
-		when "2"
+    when "2"
+      puts "What categorie would you like?".colorize(:green)
+      puts "                                                  "
 						list_categories
-
 			puts "Which category would you like?".colorize(:blue)
 			find_by_category = gets.chomp
 			my_categories = Charity.find_by_category(find_by_category)
 
-			puts "How much would you like to donate?".colorize(:magenta)
+			puts "How much would you like to donate?".colorize(:blue)
 			donation_amount = gets.chomp
 			donation = Donation.create(donor: donor, charity: my_charity, amount: donation_amount)
+      puts "Thank You for your donation!".colorize(:cyan)
+      puts "Menu"
+      puts "                                                                          "
+      donor_menu(donor)
 
-			puts "Thank You for your donation!".colorize(:cyan)
-		end
+		
 	end
 end
 
 def donor_menu(donor)
-		puts "Main Menu. What would you like to see?".colorize(:cyan)
-	puts "***************************************"
-
-	puts "1.Average amount of my donation".colorize(:cyan)
-
+		puts "Main Menu. What would you like to see?".colorize(:green)
+  puts "                                                          "
+  puts "                                                          "
+  puts "1.Average amount of my donation".colorize(:cyan)
+  puts "                                                          "
 	puts "2.Largest donation".colorize(:cyan)
-
-	puts "3.Total amount of my donations".colorize(:cyan)
-	menu_options = gets.chomp
+  puts "                                                          "
+  puts "3.Total amount of my donations".colorize(:cyan)
+  puts "                                                          "
+  puts "my choice is "
+  menu_options = gets.chomp
+  puts "                                                          "
 		case menu_options
 	when "1" 
 		puts donor.average_donations
@@ -85,7 +111,8 @@ def donor_menu(donor)
 	when "3"
 		puts donor.sum_donations
 	end
-		end
+    end
+  
 
 
 
@@ -105,8 +132,9 @@ def donor_menu(donor)
     puts "3. Animals"
     puts "4. Love of Tigers"
     puts "5. Child Well-being"
-    find_by_category = gets.chomp
-    my_categories = Charity.find_by_category(find_by_category)
+    puts "                                                       "
+    #find_by_category = gets.chomp
+    #my_categories = Charity.find_by_category(find_by_category)
   end
 end
 # binding.pry
