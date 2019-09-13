@@ -13,7 +13,7 @@ class CommandLine
     SUP
     puts gif
   end
-  
+
   def greet
     puts "Welcome to Donation Nation!".colorize(:yellow)
     
@@ -44,7 +44,15 @@ class CommandLine
       charity_description = gets.chomp
       charity = Charity.create(name: charity, location: charity_location, founding_year: charity_founding_year)
       
-      puts "Your charity account has been created!".colorize(:pink)
+      puts "
+      ██████╗██╗  ██╗ █████╗ ██████╗ ██╗████████╗██╗   ██╗     ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗██████╗ ██╗
+     ██╔════╝██║  ██║██╔══██╗██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝    ██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗██║
+     ██║     ███████║███████║██████╔╝██║   ██║    ╚████╔╝     ██║     ██████╔╝█████╗  ███████║   ██║   █████╗  ██║  ██║██║
+     ██║     ██╔══██║██╔══██║██╔══██╗██║   ██║     ╚██╔╝      ██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝  ██║  ██║╚═╝
+     ╚██████╗██║  ██║██║  ██║██║  ██║██║   ██║      ██║       ╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗██████╔╝██╗
+      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝        ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═════╝ ╚═╝
+                                                                                                                          
+     ".colorize(:blue)
     end
   end
 
@@ -66,20 +74,36 @@ class CommandLine
       donation_amount = gets.chomp
       donation = Donation.create(donor: donor, charity: my_charity, amount: donation_amount)
       
-      puts "Thank you for your donation!".colorize(:purple)
+      puts "
+      ████████╗██╗  ██╗ █████╗ ███╗   ██╗██╗  ██╗███████╗    ███████╗ ██████╗ ██████╗     ██╗   ██╗ ██████╗ ██╗   ██╗██████╗     ██████╗  ██████╗ ███╗   ██╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗██╗
+      ╚══██╔══╝██║  ██║██╔══██╗████╗  ██║██║ ██╔╝██╔════╝    ██╔════╝██╔═══██╗██╔══██╗    ╚██╗ ██╔╝██╔═══██╗██║   ██║██╔══██╗    ██╔══██╗██╔═══██╗████╗  ██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║██║
+         ██║   ███████║███████║██╔██╗ ██║█████╔╝ ███████╗    █████╗  ██║   ██║██████╔╝     ╚████╔╝ ██║   ██║██║   ██║██████╔╝    ██║  ██║██║   ██║██╔██╗ ██║███████║   ██║   ██║██║   ██║██╔██╗ ██║██║
+         ██║   ██╔══██║██╔══██║██║╚██╗██║██╔═██╗ ╚════██║    ██╔══╝  ██║   ██║██╔══██╗      ╚██╔╝  ██║   ██║██║   ██║██╔══██╗    ██║  ██║██║   ██║██║╚██╗██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║╚═╝
+         ██║   ██║  ██║██║  ██║██║ ╚████║██║  ██╗███████║    ██║     ╚██████╔╝██║  ██║       ██║   ╚██████╔╝╚██████╔╝██║  ██║    ██████╔╝╚██████╔╝██║ ╚████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║██╗
+         ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝    ╚═╝      ╚═════╝ ╚═╝  ╚═╝       ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝
+                                                                                                                                                                                                      
+      ".colorize(:purple)
       donor_menu(donor)
     when "2"
+      puts "What category would you like?".colorize(:cyan)
       list_categories
       
-      puts "Which category would you like?".colorize(:blue)
+      # puts "Which category would you like?".colorize(:blue)
       find_by_category = gets.chomp
       my_categories = Charity.find_by_category(find_by_category)
       
       puts "How much would you like to donate?"
       donation_amount = gets.chomp
       donation = Donation.create(donor: donor, charity: my_charity, amount: donation_amount)
-      puts "Thank You for your donation!"
-      binding.pry
+      puts "
+      ████████╗██╗  ██╗ █████╗ ███╗   ██╗██╗  ██╗    ██╗   ██╗ ██████╗ ██╗   ██╗        ██████╗  ██████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███████╗
+      ╚══██╔══╝██║  ██║██╔══██╗████╗  ██║██║ ██╔╝    ╚██╗ ██╔╝██╔═══██╗██║   ██║       ██╔════╝ ██╔═══██╗██╔═══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝██╔════╝
+         ██║   ███████║███████║██╔██╗ ██║█████╔╝      ╚████╔╝ ██║   ██║██║   ██║       ██║  ███╗██║   ██║██║   ██║██║  ██║██████╔╝ ╚████╔╝ █████╗  
+         ██║   ██╔══██║██╔══██║██║╚██╗██║██╔═██╗       ╚██╔╝  ██║   ██║██║   ██║       ██║   ██║██║   ██║██║   ██║██║  ██║██╔══██╗  ╚██╔╝  ██╔══╝  
+         ██║   ██║  ██║██║  ██║██║ ╚████║██║  ██╗       ██║   ╚██████╔╝╚██████╔╝▄█╗    ╚██████╔╝╚██████╔╝╚██████╔╝██████╔╝██████╔╝   ██║   ███████╗
+         ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝       ╚═╝    ╚═════╝  ╚═════╝ ╚═╝     ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝
+                                                                                                                                                   
+      ".colorize(:red)
     end
   end
 
@@ -113,8 +137,8 @@ class CommandLine
     puts "3. Animals"
     puts "4. Love of Tigers"
     puts "5. Child Well-being"
-    find_by_category = gets.chomp
-    my_categories = Charity.find_by_category(find_by_category)
+    # find_by_category = gets.chomp
+    # my_categories = Charity.find_by_category(find_by_category)
   end
 end
-# binding.pry
+
