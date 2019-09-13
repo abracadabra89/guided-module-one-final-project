@@ -1,21 +1,31 @@
 class CommandLine
-  
 
   def header
+    puts "                                                                 "
+    puts "                                                                 "
+    puts "                                                                 "
+
     gif = <<-SUP
- ██████╗  ██████╗ ███╗   ██╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗    ███╗   ██╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗
- ██╔══██╗██╔═══██╗████╗  ██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║    ████╗  ██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
- ██║  ██║██║   ██║██╔██╗ ██║███████║   ██║   ██║██║   ██║██╔██╗ ██║    ██╔██╗ ██║███████║   ██║   ██║██║   ██║██╔██╗ ██║
- ██║  ██║██║   ██║██║╚██╗██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║    ██║╚██╗██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
- ██████╔╝╚██████╔╝██║ ╚████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║    ██║ ╚████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
- ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+                     ██████╗  ██████╗ ███╗   ██╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗    ███╗   ██╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗
+                     ██╔══██╗██╔═══██╗████╗  ██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║    ████╗  ██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
+                     ██║  ██║██║   ██║██╔██╗ ██║███████║   ██║   ██║██║   ██║██╔██╗ ██║    ██╔██╗ ██║███████║   ██║   ██║██║   ██║██╔██╗ ██║
+                     ██║  ██║██║   ██║██║╚██╗██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║    ██║╚██╗██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
+                     ██████╔╝╚██████╔╝██║ ╚████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║    ██║ ╚████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
+                     ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
     SUP
     puts gif
+    puts "                                                                 "
+
+    puts "                                                                 "
+
+    puts "                                                                 "
+
   end
   
   def greet
     pid = fork{ exec 'afplay', "Donate Song.mp3" }
     puts "Welcome to Donation Nation!".colorize(:green)
+    puts "                                             "
     puts "What is your name?".colorize(:green)
     pid = fork{ exec 'afplay', "Pew_Pew-DKnight556-1379997159.mp3" }
 		name = gets.chomp
@@ -45,8 +55,16 @@ class CommandLine
       puts "Please add a description of your charity organization?".colorize(:cyan)
       pid = fork{ exec 'afplay', "Pew_Pew-DKnight556-1379997159.mp3" }
 			charity_description = gets.chomp
-			charity = Charity.create(name: charity, location: charity_location, founding_year: charity_founding_year)
+      charity = Charity.create(name: charity, location: charity_location, founding_year: charity_founding_year)
+      puts 
+                   "██████╗██╗  ██╗ █████╗ ██████╗ ██╗████████╗██╗   ██╗     ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗██████╗ ██╗
+                    ██╔════╝██║  ██║██╔══██╗██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝    ██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗██║
+                    ██║     ███████║███████║██████╔╝██║   ██║    ╚████╔╝     ██║     ██████╔╝█████╗  ███████║   ██║   █████╗  ██║  ██║██║
+                    ██║     ██╔══██║██╔══██║██╔══██╗██║   ██║     ╚██╔╝      ██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝  ██║  ██║╚═╝
+                    ╚██████╗██║  ██║██║  ██║██║  ██║██║   ██║      ██║       ╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗██████╔╝██╗
+                    ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝        ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═════╝ ╚═╝"
       pid = fork{ exec 'afplay', "Fire Crackers-SoundBible.com-1716803209.mp3" }
+      puts "                                                                          "
       puts "Your charity account has been created!".colorize(:green)
 		end
 	end
@@ -60,7 +78,8 @@ class CommandLine
     puts "                                                   "
     print "My choice is "
     pid = fork{ exec 'afplay', "Pew_Pew-DKnight556-1379997159.mp3" }
-		donor_input = gets.chomp
+    donor_input = gets.chomp
+    puts "                                                    "
 		case donor_input
 		when "1"
 			all_charities = Charity.all
@@ -74,7 +93,14 @@ class CommandLine
       pid = fork{ exec 'afplay', "Pew_Pew-DKnight556-1379997159.mp3" }
 			donation_amount = gets.chomp
       donation = Donation.create(donor: donor, charity: my_charity, amount: donation_amount)
+      #add "thank you" gif"
       puts "Thank you for your donation!".colorize(:cyan)
+      puts "████████╗██╗  ██╗ █████╗ ███╗   ██╗██╗  ██╗███████╗    ███████╗ ██████╗ ██████╗     ██╗   ██╗ ██████╗ ██╗   ██╗██████╗     ██████╗  ██████╗ ███╗   ██╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗██╗
+      ╚══██╔══╝██║  ██║██╔══██╗████╗  ██║██║ ██╔╝██╔════╝    ██╔════╝██╔═══██╗██╔══██╗    ╚██╗ ██╔╝██╔═══██╗██║   ██║██╔══██╗    ██╔══██╗██╔═══██╗████╗  ██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║██║
+         ██║   ███████║███████║██╔██╗ ██║█████╔╝ ███████╗    █████╗  ██║   ██║██████╔╝     ╚████╔╝ ██║   ██║██║   ██║██████╔╝    ██║  ██║██║   ██║██╔██╗ ██║███████║   ██║   ██║██║   ██║██╔██╗ ██║██║
+         ██║   ██╔══██║██╔══██║██║╚██╗██║██╔═██╗ ╚════██║    ██╔══╝  ██║   ██║██╔══██╗      ╚██╔╝  ██║   ██║██║   ██║██╔══██╗    ██║  ██║██║   ██║██║╚██╗██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║╚═╝
+         ██║   ██║  ██║██║  ██║██║ ╚████║██║  ██╗███████║    ██║     ╚██████╔╝██║  ██║       ██║   ╚██████╔╝╚██████╔╝██║  ██║    ██████╔╝╚██████╔╝██║ ╚████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║██╗
+         ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝    ╚═╝      ╚═════╝ ╚═╝  ╚═╝       ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝"
       pid = fork{ exec 'afplay', "Audience Clapping - Sound Effect.mp3" }
 
 			donor_menu(donor)
@@ -91,10 +117,14 @@ class CommandLine
       pid = fork{ exec 'afplay', "Pew_Pew-DKnight556-1379997159.mp3" }
 			donation_amount = gets.chomp
       donation = Donation.create(donor: donor, charity: my_charity, amount: donation_amount)
-      puts "Thank You for your donation!".colorize(:cyan)
+      puts "Thank you for your donation!".colorize(:cyan)
+      
+      puts "                                                                "
+      
+      puts "                                                                "
       pid = fork{ exec 'afplay', "Audience Clapping - Sound Effect.mp3" }
       puts "Menu"
-      puts "                                                                          "
+      puts "                                                                 "
       donor_menu(donor)
 
 		
@@ -132,11 +162,15 @@ def donor_menu(donor)
 
   def list_categories
     
-    puts "1. Great Causes"
-    puts "2. Altruism"
-    puts "3. Animals"
-    puts "4. Love of Tigers"
-    puts "5. Child Well-being"
+    puts "Great Causes".colorize(:red)
+    puts "                                                       "
+    puts "Altruism".colorize(:red)
+    puts "                                                       "
+    puts "Animals".colorize(:red)
+    puts "                                                       "
+    puts "Love of Tigers".colorize(:red)
+    puts "                                                       "
+    puts "Child Well-being".colorize(:red)
     puts "                                                       "
     
   end
